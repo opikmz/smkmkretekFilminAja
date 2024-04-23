@@ -17,10 +17,10 @@ return new class extends Migration
             $table->string('direktur')->nullable();
             $table->timestamp('tanggal_keluar')->nullable();
 
-            $table->unsignedBigInteger('studio_id')->nullable();
-            $table->foreign('studio_id')
-            ->references('id_studio')
-            ->on('studio')
+            $table->unsignedBigInteger('id_sutradara')->nullable();
+            $table->foreign('id_sutradara')
+            ->references('id_sutradara')
+            ->on('sutradara')
             ->onDelete('set null');
 
             $table->string('gambar')->nullable();

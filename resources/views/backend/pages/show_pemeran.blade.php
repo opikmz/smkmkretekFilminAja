@@ -13,6 +13,9 @@
                             </div>
                         </div>
                     </div>
+                    <div class="card-footer p-1 d-flex justify-content-end align-items-end">
+                        <div class="px-2 "><a href="" onclick="konfirmasiHapus({{ $pemeran->id_pemeran }})" class="text-danger font-weight-bold"> Hapus</a></div>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-4 mb-xl-0 mb-4">
@@ -83,4 +86,22 @@
         </div>
     </footer>
 </div>
+<script>
+    function konfirmasiHapus(id){
+        Swal.fire({
+            title: "Hapus",
+            text: "Apakah kamu yakin untuk menghapus data ini",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+          }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "{{ url('/destroy_pemeran') }}"+"/"+ id;
+            }
+          });
+    }
+
+</script>
 @endsection
