@@ -8,9 +8,9 @@
                     <div class="row">
                         <div class="col-8">
                             <div class="numbers">
-                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Today's Money</p>
+                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Jumlah Genre</p>
                                 <h5 class="font-weight-bolder mb-0">
-                                    $53,000
+                                    30
                                     <span class="text-success text-sm font-weight-bolder">+55%</span>
                                 </h5>
                             </div>
@@ -30,10 +30,10 @@
                     <div class="row">
                         <div class="col-8">
                             <div class="numbers">
-                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Today's Users</p>
+                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Jumlah Film</p>
                                 <h5 class="font-weight-bolder mb-0">
-                                    2,300
-                                    <span class="text-success text-sm font-weight-bolder">+3%</span>
+                                    1000
+                                    {{-- <span class="text-success text-sm font-weight-bolder">+3%</span> --}}
                                 </h5>
                             </div>
                         </div>
@@ -52,10 +52,10 @@
                     <div class="row">
                         <div class="col-8">
                             <div class="numbers">
-                                <p class="text-sm mb-0 text-capitalize font-weight-bold">New Clients</p>
+                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Jumlah Pemeran</p>
                                 <h5 class="font-weight-bolder mb-0">
-                                    +3,462
-                                    <span class="text-danger text-sm font-weight-bolder">-2%</span>
+                                    100
+                                    {{-- <span class="text-danger text-sm font-weight-bolder">-2%</span> --}}
                                 </h5>
                             </div>
                         </div>
@@ -74,9 +74,9 @@
                     <div class="row">
                         <div class="col-8">
                             <div class="numbers">
-                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Sales</p>
+                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Jumlah studio</p>
                                 <h5 class="font-weight-bolder mb-0">
-                                    $103,430
+                                    1000
                                     <span class="text-success text-sm font-weight-bolder">+5%</span>
                                 </h5>
                             </div>
@@ -98,10 +98,9 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="d-flex flex-column h-100">
-                                <p class="mb-1 pt-2 text-bold">Built by developers</p>
-                                <h5 class="font-weight-bolder">Soft UI Dashboard</h5>
-                                <p class="mb-5">From colors, cards, typography to complex elements, you will find the
-                                    full documentation.</p>
+                                <p class="mb-1 pt-2 text-bold">Cart</p>
+                                <h5 class="font-weight-bolder">tes</h5>
+                                <p class="mb-5">contoh cart</p>
                                 <a class="text-body text-sm font-weight-bold mb-0 icon-move-right mt-auto"
                                     href="javascript:;">
                                     Read More
