@@ -10,9 +10,9 @@
                 <div class="card-header py-0">
                     <div class="row">
                         <div class="col-lg-6 col-7 p-0">
-                            <h6>Studio</h6>
+                            <h6>Sutradara</h6>
                             <p class="text-sm mb-0">
-                                <span class=" ms-1">Data menurut waktu terbaru</span>
+                                <span class=" ms-1">Data menurut terbaru ditambahkan</span>
                             </p>
                         </div>
                     </div>
@@ -28,7 +28,7 @@
                                     </th>
                                     <th
                                         class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 text-center">
-                                        Studio</th>
+                                        Sutradara</th>
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center w-20">
                                         Aksi</th>
@@ -38,17 +38,17 @@
                                 @php
                                 $no = 1;
                                 @endphp
-                                @foreach ($studio as $s)
+                                @foreach ($sutradara as $s)
                                 <tr>
                                     <td class="align-middle text-center text-sm">
                                         <span class="text-xs font-weight-bold"> {{ $no++ }} </span>
                                     </td>
                                     <td class="align-middle text-center text-sm">
-                                        <span class=" font-weight-bold">{{ $s->studio }}</span>
+                                        <span class=" font-weight-bold">{{ $s->sutradara }}</span>
                                     </td>
                                     <td class="align-middle text-center text-sm">
-                                        <span class=" font-weight-bold"> <a href="/show_studio/{{ $s->id_studio }}">
-                                                Lihat</a> | <a href="#" onclick="konfirmasiHapus({{ $s->id_studio }})">Hapus </a></span>
+                                        <span class=" font-weight-bold"> <a href="/show_sutradara/{{ $s->id_sutradara }}">
+                                                Lihat</a> | <a href="#" onclick="konfirmasiHapus({{ $s->id_sutradara }})">Hapus </a></span>
                                     </td>
                                 </tr>
                               
@@ -75,12 +75,12 @@
                     </div>
                 </div>
                 <div class="card-body px-0 pb-2">
-                    <form method="POST" action="/store_studio" enctype="multipart/form-data">
+                    <form method="POST" action="/store_sutradara" enctype="multipart/form-data">
                         @csrf
-                        <label for="Pengarang">Studio</label>
+                        <label for="Pengarang">Sutradara</label>
                         <div class="mb-3">
-                            <input type="text" class="form-control mb-2" placeholder="Masukan Studio..."
-                                aria-label="Pengarang" name="studio">
+                            <input type="text" class="form-control mb-2" placeholder="Masukan Sutradara..."
+                                aria-label="Pengarang" name="sutradara">
                         </div>
 
                         <div class="text-center">
@@ -107,7 +107,7 @@
             confirmButtonText: "Yes, delete it!"
           }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href = "{{ url('/destroy_studio') }}"+"/"+ id;
+                window.location.href = "{{ url('/destroy_sutradara') }}"+"/"+ id;
             }
           });
     }
