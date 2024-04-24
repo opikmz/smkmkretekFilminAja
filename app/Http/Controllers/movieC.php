@@ -6,9 +6,12 @@ use App\Models\genreM;
 use App\Models\movieM;
 use App\Models\studioM;
 use App\Models\pemeranM;
-use App\Models\pemeranMovieM;
+use App\Models\sutradaraM;
+use App\Models\genreMovieM;
 use Illuminate\Http\Request;
+use App\Models\pemeranMovieM;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class movieC extends Controller
 {
@@ -27,13 +30,13 @@ class movieC extends Controller
      */
     public function create()
     {
-        $studio = studioM::latest()->get();
+        $sutradara = sutradaraM::latest()->get();
         $genre = genreM::latest()->get();
         $pemeran = pemeranM::latest()->get();
 
         $id_user = Auth::user()->id_user;
         $pemeranMovie = pemeranMovieM::where(['id_user'=>$id_user,'id_movie'=>null])->get();
-        return view('backend.pages.create_movie',compact('genre','pemeran','studio','pemeranMovie'));
+        return view('backend.pages.create_movie',compact('genre','pemeran','sutradara','pemeranMovie'));
     }
 
     public function tambah_pemeran_movie(string $id_pemeran)
@@ -53,7 +56,61 @@ class movieC extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->gambar);
 
+        $request->validate([
+            'judul'=>'required',
+            'id_sutradara'=>'required',
+            'tanggal_keluar'=>'required',
+            'genre*'=>'required',
+            'gambar.' => 'image|mimes:png,jpg,jpeg,gif|max:2048',
+
+        ]);
+        if($request->hasFile('gambar')){
+            $gambar = $request->file('gambar');
+            $nama_gambar = time() .'-'. $gambar->getClientOriginalName();
+
+            $path = public_path('assets/img/');
+            $gambar->move('img/', $nama_gambar);
+
+            $movie = new movieM;
+            $movie->judul = $request->judul;
+            $movie->id_sutradara = $request->id_sutradara;
+            $movie->tanggal_keluar = $request->tanggal_keluar;
+            $movie->keterangan = $request->keterangan;
+            $movie->gambar = $nama_gambar;
+            $movie->save();
+
+        } else{
+            $movie = new movieM;
+            $movie->judul = $request->judul;
+            $movie->id_sutradara = $request->id_sutradara;
+            $movie->tanggal_keluar = $request->tanggal_keluar;
+            $movie->keterangan = $request->keterangan;
+            $movie->save();
+        }
+
+        $id_movie = $movie->id_movie;
+        // dd($id_movie);
+        foreach($request->genre as $index=>$id_genre)
+        {
+            $genreMovie = new genreMovieM;
+            $genreMovie->id_movie = $id_movie;
+            $genreMovie->id_genre = $id_genre;
+            $genreMovie->save();
+
+        }
+        $idAdmin = Auth::user()->id_user;
+        $pemeranMovie = pemeranMovieM::where(['id_movie'=>null,'id_user'=>$idAdmin])->get();
+        foreach($pemeranMovie as $pm)
+        {
+            $pm->id_movie = $id_movie;
+            $pm->save();
+
+        }
+
+        Alert::success('Sukses','Data berhasil ditambahkan');
+        return redirect()->route('movie');
     }
 
     /**

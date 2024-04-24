@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('movie', function (Blueprint $table) {
             $table->id('id_movie');
             $table->string('judul');
-            $table->string('direktur')->nullable();
+            // $table->string('direktur')->nullable();
             $table->timestamp('tanggal_keluar')->nullable();
 
             $table->unsignedBigInteger('id_sutradara')->nullable();

@@ -11,39 +11,43 @@
                             <div class="col">
                                 <h6>Tambah Data</h6>
                                 <p class="text-sm mb-0">
-                                    <span class=" ms-1">Form tambah data</span>
+                                    <span class=" ms-1">Form tambah data. Mohon untuk mengisi pemeran terlebih dahulu</span>
                                 </p>
                             </div>
                         </div>
                     </div>
                     <div class="card-body px-0 pb-2">
-                        <form method="POST" action="/store_movie">
+                        <form method="post" action="/store_movie" enctype="multipart/form-data" >
                             @csrf
                             <label for="Pengarang">Judul</label>
                             <div class="mb-3">
                                 <input type="text" class="form-control mb-2" placeholder="Masukan Judul..."
-                                    aria-label="Pengarang" name="genre" value="">
+                                    aria-label="Pengarang" name="judul" value="">
                             </div>
 
-                            <label for="Pengarang">Direktur</label>
-                            <div class="mb-3">
-                                <input type="text" class="form-control mb-2" placeholder="Masukan direktur..."
-                                    aria-label="Pengarang" name="direktur" value="">
-                            </div>
-
-                            <label for="Pengarang">Studio</label>
-                            <select class="selectpicker form-control mb-2" name="id_studio" placeholder="Pilih Studio"
+                            <label for="Pengarang">Sutradara</label>
+                            <select class="selectpicker form-control mb-2" name="id_sutradara" placeholder="Pilih Sutradara"
                                 data-live-search="true">
-                                <option value="" selected>Pilih Studio</option>
-                                @foreach ($studio as $s)
-                                <option value="{{ $s->id_studio }}">{{ $s->studio }}</option>
+                                <option value="" selected>Pilih Sutradara</option>
+                                @foreach ($sutradara as $s)
+                                <option value="{{ $s->id_sutradara }}">{{ $s->sutradara }}</option>
                                 @endforeach
                             </select>
+
+                            <label for="Pengarang">Tanggal keluar</label>
+                            <div class="mb-3">
+                                <input type="date" class="form-control mb-2" placeholder="Masukan direktur..."
+                                    aria-label="Pengarang" name="tanggal_keluar" value="">
+                            </div>
+
                             <label for="Pengarang">Gambar</label>
                             <div class="mb-3">
-                                <input type="file" class="form-control mb-2" placeholder="Masukan direktur..."
+                                <input type="file" class="form-control mb-2"
                                     aria-label="Pengarang" name="gambar" value="">
                             </div>
+
+                            <label for="Pengarang">Keterangan</label>
+                            <textarea name="keterangan" class="form-control mb-2" id="" cols="30" rows="10"></textarea>
 
                             <div class="group mb-3">
                                 <label for="Pengarang">Pemeran </label><br>
@@ -52,7 +56,8 @@
                                     @php
                                     $pemeran1 = App\Models\pemeranM::where('id_pemeran', $p->id_pemeran)->first();
                                     @endphp
-                                    <a href="" class="btn btn-primary p-2 ">{{ $pemeran1->pemeran }}</a>
+                                    <a href="" class="btn btn-primary p-2 ">{{ $pemeran1->pemeran }} | <i
+                                            class="fas fa-trash"></i> </a>
                                     @endforeach
                                 </div>
                             </div>
@@ -63,7 +68,7 @@
                                     @foreach ($genre as $g)
                                     <div class="col">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="{{ $g->id_genre }}"
+                                            <input class="form-check-input" name="genre[]" type="checkbox" value="{{ $g->id_genre }}"
                                                 id="defaultCheck1">
                                             <label class="form-check-label" for="defaultCheck1">
                                                 {{ $g->genre }}
@@ -113,6 +118,8 @@
                                 <tbody>
                                     @php
                                     $no = 1;
+                                    // foreach ($pemeranMovie as $index => $Pm) {
+                                    // }
                                     @endphp
                                     @foreach ($pemeran as $s)
                                     <tr>
@@ -123,11 +130,10 @@
                                             <span class=" font-weight-bold">{{ $s->pemeran }}</span>
                                         </td>
                                         <td class="align-middle text-center text-sm">
-                                            <span class=" font-weight-bold"> <a
-                                                    href="/tambah_pemeran_movie/{{ $s->id_pemeran }}">Tambah</a></span>
+                                        <span class=" font-weight-bold"> <a
+                                                href="/tambah_pemeran_movie/{{ $s->id_pemeran }}">Tambah</a></span>
                                         </td>
                                     </tr>
-
                                     @endforeach
                                 </tbody>
                             </table>
@@ -138,42 +144,7 @@
 
         </div>
     </div>
-    <footer class="footer pt-3  ">
-        <div class="container-fluid">
-            <div class="row align-items-center justify-content-lg-between">
-                <div class="col-lg-6 mb-lg-0 mb-4">
-                    <div class="copyright text-center text-sm text-muted text-lg-start">
-                        © <script>
-                            document.write(new Date().getFullYear())
-                        </script>,
-                        made with <i class="fa fa-heart"></i> by
-                        <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
-                        for a better web.
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <ul class="nav nav-footer justify-content-center justify-content-lg-end">
-                        <li class="nav-item">
-                            <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Creative
-                                Tim</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted"
-                                target="_blank">About Us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="https://www.creative-tim.com/blog" class="nav-link text-muted"
-                                target="_blank">Blog</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted"
-                                target="_blank">License</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
+    @include('backend.partials.footer')
 </div>
 <script>
     var select_box_element = document.querySelector('#select_box');

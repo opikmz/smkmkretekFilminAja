@@ -24,6 +24,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/',[frontendC::class,'index'])->name('frontend');
+Route::get('/film',[frontendC::class,'film'])->name('film');
+
 Route::get('/admin',[dashboardC::class,'index'])->name('dashboard');
 
 Route::get('/register', [loginC::class, 'register'])->name('register');

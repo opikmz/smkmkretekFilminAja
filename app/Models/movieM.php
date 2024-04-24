@@ -12,8 +12,9 @@ class movieM extends Model
     protected $primaryKey = 'id_movie';
     protected $fillable = [
         'judul',
-        'direktur',
         'tanggal_keluar',
-        'studio_id',
+        'id_sutradara',
+        'gambar',
+        'keterangan',
     ];
 }

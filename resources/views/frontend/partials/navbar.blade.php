@@ -12,9 +12,9 @@
                 <a href="#" class="text-white"><small class="text-white mx-2">Privacy Policy</small>/</a>
                 <a href="#" class="text-white"><small class="text-white mx-2">Terms of Use</small>/</a>
                 @if (Auth::check())
-                <a href="#" class="text-white"><small class="text-white mx-2">Logout</small>/</a>
+                <a href="/logout" class="text-white"><small class="text-white mx-2">Logout</small>/</a>
                 @else
-                <a href="#" class="text-white"><small class="text-white mx-2">Login</small></a>
+                <a href="/login" class="text-white"><small class="text-white mx-2">Login</small></a>
                 @endif
                 {{-- <a href="#" class="text-white"><small class="text-white ms-2">Sales and Refunds</small></a> --}}
             </div>
