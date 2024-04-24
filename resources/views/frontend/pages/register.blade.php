@@ -23,7 +23,7 @@
                     <div class="col-lg-6 col-md-12" style="">
                         <form action="/store_register" class="mb-4" method="POST">
                             @csrf
-                            <input type="text" name="nickname" class=" form-control border-0 py-3 mb-4" placeholder="Masukan Nama">
+                            <input type="text" name="nama" class=" form-control border-0 py-3 mb-4" placeholder="Masukan Nama">
                             <input type="email" name="email" class="w-100 form-control border-0 py-3 mb-4"
                                 placeholder="Masukan Email">
                             <input type="password" name="password" class="w-100 form-control border-0 py-3 mb-4"

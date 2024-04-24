@@ -22,15 +22,15 @@ class loginC extends Controller
     public function store_register(Request $request)
     {
         $request->validate([
-            'nickname'=>'required|string',
+            'nama'=>'required|string',
             'email'=>'required|unique:user',
-            'password'=>'required|min:5',
+            'password'=>'required|min:6',
         ]);
 
         $password = Hash::make($request->password);
 
         $user = new User;
-        $user->nickname = $request->nickname;
+        $user->nama = $request->nama;
         $user->email = $request->email;
         $user->password = $password;
         $user->role = 'user';

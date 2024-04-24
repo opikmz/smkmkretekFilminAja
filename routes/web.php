@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\genreC;
+use App\Http\Controllers\loginC;
 use App\Http\Controllers\movieC;
 use App\Http\Controllers\pemeranC;
 use App\Http\Controllers\frontendC;
@@ -24,6 +25,13 @@ Route::get('/', function () {
 });
 Route::get('/',[frontendC::class,'index'])->name('frontend');
 Route::get('/admin',[dashboardC::class,'index'])->name('dashboard');
+
+Route::get('/register', [loginC::class, 'register'])->name('register');
+Route::post('/store_register', [loginC::class, 'store_register'])->name('store_register');
+
+Route::get('/login', [loginC::class, 'login'])->name('login');
+Route::post('/act_login', [loginC::class, 'act_login'])->name('act_login');
+Route::get('/logout', [loginC::class, 'logout'])->name('logout');
 
 // Sutradara
 Route::get('/sutradara',[sutradaraC::class,'index'])->name('sutradara');
